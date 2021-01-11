@@ -4,7 +4,12 @@
     "version": "0.1.0",
     "description": "Ask Acho where are you and he'll bark the page title at you.",
     "browser_action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon16.png",
+            "24": "images/icon24.png",
+            "32": "images/icon32.png"
+        }
     },
     "permissions": [
         "tabs"
