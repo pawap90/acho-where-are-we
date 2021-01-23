@@ -3,6 +3,9 @@ chrome.commands.onCommand.addListener(function (command) {
         case 'duplicate-tab':
             duplicateTab();
             break;
+        case 'bark-title':
+            barkTitle();
+            break;
         default:
             console.log(`Command ${command} not found`);
     }
@@ -15,5 +18,19 @@ function duplicateTab() {
     const query = { active: true, currentWindow: true };
     chrome.tabs.query(query, (tabs) => {
         chrome.tabs.create({ url: tabs[0].url, active: false });
+    });
+}
+
+function barkTitle() {
+    const query = { active: true, currentWindow: true };
+    chrome.tabs.query(query, (tabs) => {
+        try {
+            chrome.tabs.sendMessage(tabs[0].id, {
+                tabTitle: tabs[0].title
+            });
+        }
+        catch(err) {
+            alert('tab found'+ JSON.stringify(err));
+        }
     });
 }
