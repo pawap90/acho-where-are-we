@@ -3,12 +3,9 @@
     border: rgb(242, 105, 77) 1px solid;
     border-radius: 5px;
     font-size: medium;
-    font-weight: 600;
-    width: 300px;
+    width: 320px;
     display: none;
-    text-align: center;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 8px;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -17,5 +14,4 @@
 
 .acho-notification > img {
     margin-right: 12px;
-    margin-left: 12px;
 }
