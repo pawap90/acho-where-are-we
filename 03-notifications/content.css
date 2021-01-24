@@ -1,0 +1,21 @@
+.acho-notification {
+    background-color: white;
+    border: rgb(242, 105, 77) 1px solid;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: 600;
+    width: 300px;
+    display: none;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    align-items: center;
+}
+
+.acho-notification > img {
+    margin-right: 12px;
+    margin-left: 12px;
+}
