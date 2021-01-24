@@ -1,4 +1,3 @@
-
 // Notification body.
 const notification = document.createElement("div");
 notification.className = 'acho-notification';
@@ -20,16 +19,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     const notification = document.getElementsByClassName('acho-notification')[0];
     const notificationText = document.getElementsByClassName('acho-notification-text')[0];
-    notificationText.innerText = `${request.tabTitle}`;
+
+    const acho = new Acho();
+    notificationText.innerHTML = acho.getBarkedTitle(request.tabTitle);
 
     notification.style.display = 'flex';
 
     setTimeout(function () {
 
         notification.style.display = 'none';
-    }, 3000);
-
-
-
+    }, 5000);
+    
     return true;
 });
