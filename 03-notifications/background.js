@@ -3,7 +3,7 @@ chrome.commands.onCommand.addListener(function (command) {
         case 'duplicate-tab':
             duplicateTab();
             break;
-        case 'bark-title':
+        case 'bark':
             barkTitle();
             break;
         default:
@@ -24,13 +24,8 @@ function duplicateTab() {
 function barkTitle() {
     const query = { active: true, currentWindow: true };
     chrome.tabs.query(query, (tabs) => {
-        try {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                tabTitle: tabs[0].title
-            });
-        }
-        catch(err) {
-            alert('tab found'+ JSON.stringify(err));
-        }
+        chrome.tabs.sendMessage(tabs[0].id, {
+            tabTitle: tabs[0].title
+        });
     });
 }

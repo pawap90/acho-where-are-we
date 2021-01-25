@@ -24,10 +24,9 @@
             },
             "description": "Duplicates the current active tab because... why not?"
         },
-        "bark-title": {
+        "bark": {
             "suggested_key": {
-                "default": "Ctrl+Shift+A",
-                "mac": "Command+Shift+A"
+                "default": "Alt+Shift+3"
             },
             "description": "Makes Acho bark the title at the bottom right of the current page"
         }
