@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const notificationText = notification.getElementsByTagName('p')[0];
 
     const acho = new Acho();
-    notificationText.innerHTML = request.tabTitle; //acho.getBarkedTitle(request.tabTitle);
+    notificationText.innerHTML = "You are at: " + request.tabTitle; //acho.getBarkedTitle(request.tabTitle);
 
     notification.style.display = 'flex';
 
