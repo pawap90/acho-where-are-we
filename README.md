@@ -5,3 +5,4 @@ This repo was created as an example for a series of articles I'm writing about C
 
 - Folder: `01-simple-example` was created for the article: [Creating a simple Chrome extension](https://dev.to/paulasantamaria/creating-a-simple-chrome-extension-36m)
 - Folder: `02-adding-commands` was created for the article: [Adding shortcuts to your Chrome Extension](https://dev.to/paulasantamaria/adding-shortcuts-to-your-chrome-extension-2i20)
+- Folder: `03-content-scripts` was created for the article: [Making changes to a web page](https://dev.to/paulasantamaria/chrome-extensions-making-changes-to-a-web-page-1n5f)
