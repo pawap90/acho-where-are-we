@@ -1,10 +1,10 @@
-chrome.commands.onCommand.addListener(function (command) {
+chrome.commands.onCommand.addListener(async (command) => {
     switch (command) {
         case 'duplicate-tab':
-            duplicateTab();
+            await duplicateTab();
             break;
         case 'bark':
-            barkTitle();
+            await barkTitle();
             break;
         default:
             console.log(`Command ${command} not found`);
@@ -14,18 +14,21 @@ chrome.commands.onCommand.addListener(function (command) {
 /**
  * Gets the current active tab URL and opens a new tab with the same URL.
  */
-function duplicateTab() {
-    const query = { active: true, currentWindow: true };
-    chrome.tabs.query(query, (tabs) => {
-        chrome.tabs.create({ url: tabs[0].url, active: false });
-    });
+const duplicateTab = async () => {
+    const acho = new Acho();
+    const tab = await acho.getActiveTab();
+
+    chrome.tabs.create({ url: tab.url, active: false });
 }
 
-function barkTitle() {
-    const query = { active: true, currentWindow: true };
-    chrome.tabs.query(query, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, {
-            tabTitle: tabs[0].title
-        });
+/**
+ * Sends message to the content script with the currently active tab title.
+ */
+const barkTitle = async () => {
+    const acho = new Acho();
+    const tab = await acho.getActiveTab();
+
+    chrome.tabs.sendMessage(tab.id, {
+        tabTitle: tab.title
     });
 }

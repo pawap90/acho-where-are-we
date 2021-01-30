@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     
     const dialogBox = document.getElementById('dialog-box');
     const query = { active: true, currentWindow: true };
+    
+    const acho = new Acho();
+    const tab = await acho.getActiveTab();
+    const bark = acho.getBarkedTitle(tab.title);
 
-    chrome.tabs.query(query, (tabs) => {
-        const acho = new Acho();
-        dialogBox.innerHTML = acho.getBarkedTitle(tabs[0].title);
-    });
+    dialogBox.innerHTML = bark;
 });

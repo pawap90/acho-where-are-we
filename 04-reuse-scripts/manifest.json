@@ -32,9 +32,7 @@
         }
     },
     "background": {
-        "scripts": [
-            "background.js"
-        ],
+        "scripts": [ "background.js", "acho.js" ],
         "persistent": false
     },
     "content_scripts": [

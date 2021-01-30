@@ -25,7 +25,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     notification.style.display = 'flex';
 
     setTimeout(function () {
-
         notification.style.display = 'none';
     }, 5000);
     
