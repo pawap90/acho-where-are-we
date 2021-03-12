@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Display history.
     await displayPages();
 
+    // Clear history
     const clearHistoryBtn = document.getElementById('clear-history');
     clearHistoryBtn.onclick = async () => {
         await PageService.clearPages();
@@ -34,7 +35,10 @@ const displayPages = async () => {
         pageLink.title = page.title;
         pageLink.innerHTML = page.title;
         pageLink.href = page.url;
+        pageLink.onclick = (ev) => {
+            ev.preventDefault();
+            chrome.tabs.create({ url: ev.srcElement.href, active: false });
+        };
         pageItem.appendChild(pageLink);
     });
 }
-
