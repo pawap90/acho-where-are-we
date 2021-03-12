@@ -5,22 +5,18 @@ const PAGES_KEY = 'pages';
 class PageService {
 
     /**
+     * 
      * @returns {Promise<Array>}
      */
     static getPages = () => {
-        const promise = new Promise((resolve, reject) => {
-            try {
-                chrome.storage.local.get([PAGES_KEY], (result) => {
-                    if (chrome.runtime.lastError)
-                        reject(chrome.runtime.lastError);
+        const promise = toPromise((resolve, reject) => {
+            chrome.storage.local.get([PAGES_KEY], (result) => {
+                if (chrome.runtime.lastError)
+                    reject(chrome.runtime.lastError);
 
-                    const researches = result.pages ?? [];
-                    resolve(researches);
-                });
-            }
-            catch (err) {
-                reject(err);
-            }
+                const researches = result.pages ?? [];
+                resolve(researches);
+            });
         });
 
         return promise;
@@ -30,37 +26,45 @@ class PageService {
         const pages = await this.getPages();
         const updatedPages = [...pages, { title, url }];
 
-        const promise = new Promise((resolve, reject) => {
-            try {
-                chrome.storage.local.set({ [PAGES_KEY]: updatedPages }, () => {
-                    if (chrome.runtime.lastError)
-                        reject(chrome.runtime.lastError);
-                    resolve(updatedPages);
-                });
-            }
-            catch (err) {
-                reject(err);
-            }
+        const promise = toPromise((resolve, reject) => {
+            
+            chrome.storage.local.set({ [PAGES_KEY]: updatedPages }, () => {          
+                if (chrome.runtime.lastError)
+                    reject(chrome.runtime.lastError);
+                resolve(updatedPages);
+            });
         });
 
         return promise;
     }
 
-    static clearPages = async () => {
-        const promise = new Promise((resolve, reject) => {
-            try {
-                chrome.storage.local.clear(() => {
-                    if (chrome.runtime.lastError)
-                        reject(chrome.runtime.lastError);
+    static clearPages = () => {
+        const promise = toPromise((resolve, reject) => {
+            chrome.storage.local.remove([PAGES_KEY], () => {
+                if (chrome.runtime.lastError)
+                    reject(chrome.runtime.lastError);
 
-                    resolve();
-                });
-            }
-            catch (err) {
-                reject(err);
-            }
+                resolve();
+            });
         });
 
         return promise;
     }
+}
+
+/**
+ * Promisify a callback.
+ * @param {Function} callback 
+ * @returns {Promise}
+ */
+const toPromise = (callback) => {
+    const promise = new Promise((resolve, reject) => {
+        try {
+            callback(resolve, reject);
+        }
+        catch (err) {
+            reject(err);
+        }
+    });
+    return promise;
 }
