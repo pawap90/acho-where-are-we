@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         await PageService.clearPages();
         await displayPages();
     };
+
+    acho.quiet();
 });
 
 const displayPages = async () => {

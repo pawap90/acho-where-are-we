@@ -11,6 +11,14 @@ chrome.commands.onCommand.addListener(async (command) => {
     }
 });
 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    new Acho().growl();
+});
+
+chrome.tabs.onCreated.addListener(tab => {
+    new Acho().growl();
+});
+
 /**
  * Gets the current active tab URL and opens a new tab with the same URL.
  */
@@ -33,4 +41,6 @@ const barkTitle = async () => {
     });
 
     await PageService.savePage(tab.title, tab.url);
+
+    acho.quiet();
 }

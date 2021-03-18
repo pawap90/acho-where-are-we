@@ -26,6 +26,22 @@ class Acho {
     }
 
     /**
+     * Display a badge with the text 'grr' over the browser action icon
+     */
+    growl = () => {
+        chrome.browserAction.setBadgeBackgroundColor({ color: '#F00' }, () => {
+            chrome.browserAction.setBadgeText({ text: 'grr' });
+        });
+    }
+
+    /**
+     * Hide the browser action badge.
+     */
+    quiet = () => {
+        chrome.browserAction.setBadgeText({});
+    }
+
+    /**
      * Array of available bark sounds
      * @private
      * @returns {String[]}
