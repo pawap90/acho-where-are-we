@@ -1,0 +1,52 @@
+{
+    "manifest_version": 2,
+    "name": "Acho, where are we?",
+    "version": "0.1.0",
+    "description": "Ask Acho where you are and he'll bark the page title at you.",
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon16.png",
+            "24": "images/icon24.png",
+            "32": "images/icon32.png"
+        }
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Alt+Shift+1"
+            }
+        },
+        "duplicate-tab": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+2",
+                "mac": "Command+Shift+2"
+            },
+            "description": "Duplicates the current active tab because... why not?"
+        },
+        "bark": {
+            "suggested_key": {
+                "default": "Alt+Shift+3"
+            },
+            "description": "Makes Acho bark the title at the bottom right of the current page"
+        }
+    },
+    "background": {
+        "scripts": [ "background.js", "acho.js", "page.service.js" ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js", "acho.js"],
+            "css": ["content.css"]
+        }
+    ],
+    "web_accessible_resources": [
+        "images/icon32.png"
+    ],
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
+}
