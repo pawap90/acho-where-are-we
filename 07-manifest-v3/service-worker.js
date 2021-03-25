@@ -1,3 +1,5 @@
+importScripts('acho.js', 'page.service.js');
+
 chrome.commands.onCommand.addListener(async (command) => {
     switch (command) {
         case 'duplicate-tab':
@@ -36,7 +38,7 @@ const barkTitle = async () => {
     const acho = new Acho();
     const tab = await acho.getActiveTab();
 
-    chrome.tabs.sendMessage(tab.id, {
+    await chrome.tabs.sendMessage(tab.id, {
         tabTitle: tab.title
     });
 

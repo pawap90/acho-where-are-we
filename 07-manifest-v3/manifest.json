@@ -32,8 +32,7 @@
         }
     },
     "background": {
-        "scripts": [ "background.js", "acho.js", "page.service.js" ],
-        "persistent": false
+        "service_worker": "service-worker.js"
     },
     "content_scripts": [
         {
@@ -41,9 +40,6 @@
             "js": ["content.js", "acho.js"],
             "css": ["content.css"]
         }
-    ],
-    "web_accessible_resources": [
-        "images/icon32.png"
     ],
     "permissions": [
         "tabs",
