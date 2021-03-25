@@ -29,8 +29,8 @@ class Acho {
      * Display a badge with the text 'grr' over the browser action icon
      */
     growl = () => {
-        chrome.browserAction.setBadgeBackgroundColor({ color: '#F00' }, () => {
-            chrome.browserAction.setBadgeText({ text: 'grr' });
+        chrome.action.setBadgeBackgroundColor({ color: '#F00' }, () => {
+            chrome.action.setBadgeText({ text: 'grr' });
         });
     }
 
@@ -38,7 +38,7 @@ class Acho {
      * Hide the browser action badge.
      */
     quiet = () => {
-        chrome.browserAction.setBadgeText({});
+        chrome.action.setBadgeText({});
     }
 
     /**
