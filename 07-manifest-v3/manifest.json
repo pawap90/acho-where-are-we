@@ -41,6 +41,12 @@
             "css": ["content.css"]
         }
     ],
+    "web_accessible_resources": [
+        {
+            "matches": ["<all_urls>"],
+            "resources": ["images/icon32.png"]
+        }
+    ],
     "permissions": [
         "tabs",
         "storage"
