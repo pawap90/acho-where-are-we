@@ -13,12 +13,12 @@ chrome.commands.onCommand.addListener(async (command) => {
     }
 });
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    new Acho().growl();
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+    await new Acho().growl();
 });
 
-chrome.tabs.onCreated.addListener(tab => {
-    new Acho().growl();
+chrome.tabs.onCreated.addListener(async tab => {
+    await new Acho().growl();
 });
 
 /**
@@ -44,5 +44,5 @@ const barkTitle = async () => {
 
     await PageService.savePage(tab.title, tab.url);
 
-    acho.quiet();
+    await acho.quiet();
 }

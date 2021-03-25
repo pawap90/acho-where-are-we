@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         await displayPages();
     };
 
-    acho.quiet();
+    await acho.quiet();
 });
 
 const displayPages = async () => {
@@ -37,9 +37,9 @@ const displayPages = async () => {
         pageLink.title = page.title;
         pageLink.innerHTML = page.title;
         pageLink.href = page.url;
-        pageLink.onclick = (ev) => {
+        pageLink.onclick = async (ev) => {
             ev.preventDefault();
-            chrome.tabs.create({ url: ev.srcElement.href, active: false });
+            await chrome.tabs.create({ url: ev.target.href, active: false });
         };
         pageItem.appendChild(pageLink);
     });
