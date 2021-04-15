@@ -9,3 +9,4 @@ This repo was created as an example for a series of articles I'm writing about C
 - Folder: `04-reuse-scripts` was created for the article: [Chrome extensions: Reusing code](https://dev.to/paulasantamaria/chrome-extensions-reusing-code-3f1g)
 - Folder: `05-storage` was created for the article: [Chrome extensions: Local storage](https://dev.to/paulasantamaria/chrome-extensions-local-storage-1b34)
 - Folder: `06-badge` was created for the article: [Chrome Extensions: Adding a badge](https://dev.to/paulasantamaria/chrome-extensions-adding-a-badge-644)
+- Folder: `07-manifest-v3` was created for the article: [Chrome Extensions: Migrating to Manifest v3](https://dev.to/paulasantamaria/chrome-extensions-migrating-to-manifest-v3-5e88)
