@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "description": "Ask Acho where you are and he'll bark the page title at you.",
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "src/popup/popup.html",
         "default_icon": {
             "16": "images/icon16.png",
             "24": "images/icon24.png",
@@ -32,13 +32,13 @@
         }
     },
     "background": {
-        "service_worker": "service-worker.js"
+        "service_worker": "src/service-worker.js"
     },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["content.js", "acho.js"],
-            "css": ["content.css"]
+            "js": ["src/content/content.js", "src/logic/acho.js"],
+            "css": ["src/content/content.css"]
         }
     ],
     "web_accessible_resources": [
